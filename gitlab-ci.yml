@@ -1,0 +1,12 @@
+# Runs the schema and every query file on each push.
+# Open the pipeline job log to see each query's output.
+run-sql:
+  image: alpine:3.20
+  before_script:
+    - apk add --no-cache bash sqlite
+  script:
+    - bash run.sh
+  artifacts:
+    paths:
+      - w3schools.db
+    expire_in: 1 week
